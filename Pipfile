@@ -16,6 +16,7 @@ sqlalchemy-serializer = "*"
 alembic = "*"
 gunicorn = "*"
 pyjwt = "*"
+faker = "*"
 
 [dev-packages]
 

@@ -50,6 +50,7 @@ class Animal(db.Model):
     type = db.Column(db.String(50))
     breed = db.Column(db.String(100))
     price = db.Column(db.Integer)
+    image = db.Column(db.String)
 
     farmer_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
