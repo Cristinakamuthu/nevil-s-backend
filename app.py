@@ -14,7 +14,7 @@ from models import User, Animal, CartItem, Order, OrderItem
 app = Flask(__name__)
 CORS(app,
      origins=[
-         "http://localhost:3000",
+         "http://localhost:5173",
          "https://farmart-frontend-6fhz.onrender.com"
      ],
      supports_credentials=True)
