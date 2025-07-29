@@ -19,20 +19,20 @@ CORS(app,
      ],
      supports_credentials=True)
 
-# Configuration
+
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///farm.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['JWT_SECRET_KEY'] = 'super-secret-key'
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
-# Extensions
+
 db.init_app(app)
 migrate = Migrate(app, db)
 api = Api(app)
 jwt = JWTManager(app)
 
-# Admin-only route decorator
+
 def admin_required(f):
     @wraps(f)
     @jwt_required()
@@ -180,7 +180,6 @@ def remove_cart_item(item_id):
     db.session.commit()
     return jsonify({'message': 'Removed from cart'}), 200
 
-# Order Routes
 @app.route('/checkout', methods=['POST'])
 @jwt_required()
 def checkout():
@@ -228,7 +227,6 @@ def update_order_status(order_id):
     db.session.commit()
     return jsonify(order.to_dict()), 200
 
-# Admin routes
 @app.route('/admin/orders', methods=['GET'])
 @admin_required
 def get_all_orders():

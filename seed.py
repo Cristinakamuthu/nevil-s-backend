@@ -10,7 +10,7 @@ with app.app_context():
     db.create_all()
     print("🌱 Seeding database...")
 
-    # Delete existing data in FK-safe order
+
     OrderItem.query.delete()
     Order.query.delete()
     CartItem.query.delete()
@@ -18,7 +18,7 @@ with app.app_context():
     User.query.delete()
     db.session.commit()
 
-    # Seed Users
+   
     users = []
     roles = ['farmer', 'buyer']
     for _ in range(15):
@@ -33,7 +33,7 @@ with app.app_context():
         users.append(user)
     db.session.commit()
 
-    # Seed Animals (only for farmers)
+ 
     farmers = [u for u in users if u.role == 'farmer']
     animals = []
     for _ in range(15):
@@ -49,7 +49,7 @@ with app.app_context():
         animals.append(animal)
     db.session.commit()
 
-    # Seed Cart Items (only for buyers)
+   
     buyers = [u for u in users if u.role == 'buyer']
     for _ in range(15):
         cart_item = CartItem(
@@ -60,7 +60,7 @@ with app.app_context():
         db.session.add(cart_item)
     db.session.commit()
 
-    # Seed Orders and Order Items (buyers only)
+ 
     for _ in range(15):
         buyer = random.choice(buyers)
         order = Order(
@@ -68,7 +68,7 @@ with app.app_context():
             status=random.choice(["pending", "shipped", "delivered"])
         )
         db.session.add(order)
-        db.session.flush()  # Get order.id before creating items
+        db.session.flush()  
 
         total_price = 0
         for _ in range(random.randint(1, 3)):
