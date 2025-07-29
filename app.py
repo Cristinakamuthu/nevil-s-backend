@@ -53,7 +53,7 @@ def admin_required(f):
 
 @app.route("/")
 def home():
-    return "these routes are working 💋"
+    return "these routes are working !"
 
 # Auth Routes
 @app.route('/register', methods=['POST'])
