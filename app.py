@@ -91,6 +91,7 @@ def get_current_user():
     user = User.query.get(user_id)
     return jsonify(user.to_dict()), 200
 
+
 # Animal Routes
 @app.route('/animals', methods=['GET'])
 def get_animals():
@@ -247,3 +248,7 @@ def get_all_animals_admin():
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
+
+# change password
+# handle update profile
+# handle delete profile
